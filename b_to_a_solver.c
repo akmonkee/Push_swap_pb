@@ -41,7 +41,7 @@ int	case_rrarb_a(int *stack_a, int *stack_b, int nbr, t_index *t_index)
 
 	i = 0;
 	if (find_placein_a(stack_a, nbr, t_index->index_a))
-		i = t_index->index_a + find_placein_a(stack_a, nbr, t_index->index_a);
+		i = t_index->index_a - find_placein_a(stack_a, nbr, t_index->index_a);
 	i = index_finder(stack_b, nbr, t_index->index_b) + i;
 	return (i);
 }
@@ -52,7 +52,7 @@ int	case_rarrb_a(int *stack_a, int *stack_b, int nbr, t_index *t_index)
 
 	i = 0;
 	if (index_finder(stack_b, nbr, t_index->index_b))
-		i = t_index->index_b + index_finder(stack_b, nbr, t_index->index_b);
+		i = t_index->index_b - index_finder(stack_b, nbr, t_index->index_b);
 	i = find_placein_a(stack_a, nbr, t_index->index_a) + i;
 	return (i);
 }
