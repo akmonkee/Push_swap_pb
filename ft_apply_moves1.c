@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 10:53:52 by msisto            #+#    #+#             */
-/*   Updated: 2024/06/18 11:15:21 by msisto           ###   ########.fr       */
+/*   Updated: 2024/09/30 11:13:18 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	ft_apply_rr_a(int *stack_a, int *stack_b, int nbr, t_index *t_index)
 {
-	while (stack_b[0] != nbr && find_placein_a(stack_a, nbr, t_index->index_a) > 0)
+	while (stack_b[0] != nbr
+		&& find_placein_a(stack_a, nbr, t_index->index_a) > 0)
 	{
 		rr(stack_a, stack_b, t_index, 0);
 		ft_printf("rr\n");
@@ -36,7 +37,8 @@ int	ft_apply_rr_a(int *stack_a, int *stack_b, int nbr, t_index *t_index)
 
 int	ft_apply_rrarrb_a(int *stack_a, int *stack_b, int nbr, t_index *t_index)
 {
-	while (stack_b[0] != nbr && find_placein_a(stack_a, nbr, t_index->index_a) > 0)
+	while (stack_b[0] != nbr
+		&& find_placein_a(stack_a, nbr, t_index->index_a) > 0)
 	{
 		rrr(stack_a, stack_b, t_index, 0);
 		ft_printf("rrr\n");

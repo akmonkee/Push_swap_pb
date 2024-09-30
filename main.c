@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 14:43:34 by msisto            #+#    #+#             */
-/*   Updated: 2024/06/06 11:10:27 by msisto           ###   ########.fr       */
+/*   Updated: 2024/09/30 11:31:37 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,6 @@ int	ft_atoi(char *str)
 			seg = -1;
 		i++;
 	}
-	num = i;
-	while (str[num] != '\0')
-	{
-		if (!(str[num] >= '0' && str[num] <= '9'))
-			return (ft_custom_error(1), 0);
-		num++;
-	}
 	num = 0;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
@@ -83,9 +76,9 @@ int	*stack_b_gen(int *stack_b, int len)
 int	main(int argc, char **argv)
 {
 	t_index	t_index;
-	int	*stack_a;
-	int	*stack_b;
-	int	i;
+	int		*stack_a;
+	int		*stack_b;
+	int		i;
 
 	i = -1;
 	if (argc > 1)

@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:12:18 by msisto            #+#    #+#             */
-/*   Updated: 2024/06/20 14:45:50 by msisto           ###   ########.fr       */
+/*   Updated: 2024/09/30 11:26:46 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,23 +96,6 @@ void	sorting(int *stack_a, int *stack_b, t_index *t_index)
 	{
 		sort_b(stack_a, stack_b, t_index);
 		sort_a(stack_a, stack_b, t_index);
-		i = index_finder(stack_a, min_of_stack(stack_a, t_index->index_a), t_index->index_a);
-		if (i < t_index->index_a - i)
-		{
-			while (stack_a[0] != min_of_stack(stack_a, t_index->index_a))
-			{
-				ra(stack_a, t_index, 0);
-				ft_printf("ra\n");
-			}
-		}
-		else
-		{
-			while (stack_a[0] != min_of_stack(stack_a, t_index->index_a))
-			{
-				rra(stack_a, t_index, 0);
-				ft_printf("rra\n");
-			}
-		}
+		min_nbr_top(stack_a, t_index);
 	}
-	//print_stack(stack_a, stack_b, t_index);
 }

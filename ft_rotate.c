@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:49:03 by msisto            #+#    #+#             */
-/*   Updated: 2024/06/20 11:47:43 by msisto           ###   ########.fr       */
+/*   Updated: 2024/09/30 11:12:49 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,7 @@ int	rotate_type_ab(int	*stack_a, int *stack_b, t_index *t_index)
 		if (i > case_rrarb(stack_a, stack_b, stack_a[k], t_index))
 			i = case_rrarb(stack_a, stack_b, stack_a[k], t_index);
 		else
-		k++;
-		//ft_printf("case_rr: %d\n", case_rr(stack_a, stack_b, stack_a[k - 1], t_index));
-		//ft_printf("case_rrr: %d\n", case_rrr(stack_a, stack_b, stack_a[k - 1], t_index));
-		//ft_printf("case_rrarb: %d\n", case_rrarb(stack_a, stack_b, stack_a[k - 1], t_index));
-		//ft_printf("case_rarrb: %d\n", case_rarrb(stack_a, stack_b, stack_a[k - 1], t_index));
-		//ft_printf("nbr: %d\n", stack_a[k - 1]);
-		//ft_printf("k: %d\n", k - 1);
-		//ft_printf("-----------------------\n");
+			k++;
 	}
 	return (i);
 }
@@ -61,13 +54,6 @@ int	rotate_type_ba(int	*stack_a, int *stack_b, t_index *t_index)
 			i = case_rrarb_a(stack_a, stack_b, stack_b[k], t_index);
 		else
 			k++;
-		//ft_printf("case_rr_a: %d\n", case_rr_a(stack_a, stack_b, stack_b[k - 1], t_index));
-		//ft_printf("case_rrr_a: %d\n", case_rrr_a(stack_a, stack_b, stack_b[k - 1], t_index));
-		//ft_printf("case_rrarb_a: %d\n", case_rrarb_a(stack_a, stack_b, stack_b[k - 1], t_index));
-		//ft_printf("case_rarrb_a: %d\n", case_rarrb_a(stack_a, stack_b, stack_b[k - 1], t_index));
-		//ft_printf("nbr: %d\n", stack_b[k - 1]);
-		//ft_printf("k:%d\n", k - 1);
-		//ft_printf("-----------------------\n");
 	}
 	return (i);
 }

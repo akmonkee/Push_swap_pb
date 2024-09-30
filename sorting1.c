@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:12:37 by msisto            #+#    #+#             */
-/*   Updated: 2024/06/18 11:54:26 by msisto           ###   ########.fr       */
+/*   Updated: 2024/09/30 11:25:11 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,28 @@ void	print_stack(int *stack_a, int *stack_b, t_index *t_index)
 		i++;
 	}
 	ft_printf("-------------\n");
+}
+
+void	min_nbr_top(int *stack_a, t_index *t_index)
+{
+	int	i;
+
+	i = index_finder(stack_a, min_of_stack(stack_a, t_index->index_a),
+			t_index->index_a);
+	if (i < t_index->index_a - i)
+	{
+		while (stack_a[0] != min_of_stack(stack_a, t_index->index_a))
+		{
+			ra(stack_a, t_index, 0);
+			ft_printf("ra\n");
+		}
+	}
+	else
+	{
+		while (stack_a[0] != min_of_stack(stack_a, t_index->index_a))
+		{
+			rra(stack_a, t_index, 0);
+			ft_printf("rra\n");
+		}
+	}
 }

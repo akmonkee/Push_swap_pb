@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 14:48:43 by msisto            #+#    #+#             */
-/*   Updated: 2024/06/20 12:14:07 by msisto           ###   ########.fr       */
+/*   Updated: 2024/09/30 11:35:04 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdio.h>
 # include "printf/ft_printf.h"
 
-typedef struct
+typedef struct t_index
 {
 	int	index_a;
 	int	index_b;
@@ -28,7 +28,6 @@ typedef struct
 }	t_index;
 
 void	is_all_numbr(int argc, char**argv);
-void	sorting(int *stack_a, int *stack_b, t_index *t_index);
 int		order_checker(int *stack, int len, int type);
 void	print_stack(int *stack_a, int *stack_b, t_index *t_index);
 /*split and friends*/
@@ -50,10 +49,11 @@ void	inv_arg_check(char **argv);
 int		put_split_instack(char *str, char **split, int *stack, int index);
 int		*stack_b_gen(int *stack_b, int len);
 /*if len is 3*/
+void	sort_three_util(int	*stack, t_index *t_index);
 void	sort_three(int	*stack, t_index *t_index);
 /*moves*/
 void	sa(int *stack_a, int index);
-void	sb(int *stack_b,int index);
+void	sb(int *stack_b, int index);
 void	ss(int *stack_a, int *stack_b, int index);
 void	pa(int *stack_a, int *stack_b, t_index *t_index, int index);
 void	pb(int *stack_a, int *stack_b, t_index *t_index, int index);
@@ -86,11 +86,13 @@ int		rotate_type_ab(int	*stack_a, int *stack_b, t_index *t_index);
 int		rotate_type_ba(int	*stack_a, int *stack_b, t_index *t_index);
 /*apply_moves*/
 int		ft_apply_rr_b(int *stack_a, int *stack_b, int nbr, t_index *t_index);
-int		ft_apply_rrarrb_b(int *stack_a, int *stack_b, int nbr, t_index *t_index);
+int		ft_apply_rrarrb_b(int *stack_a, int *stack_b,
+			int nbr, t_index *t_index);
 int		ft_apply_rrarb_b(int *stack_a, int *stack_b, int nbr, t_index *t_index);
 int		ft_apply_rarrb_b(int *stack_a, int *stack_b, int nbr, t_index *t_index);
 int		ft_apply_rr_a(int *stack_a, int *stack_b, int nbr, t_index *t_index);
-int		ft_apply_rrarrb_a(int *stack_a, int *stack_b, int nbr, t_index *t_index);
+int		ft_apply_rrarrb_a(int *stack_a, int *stack_b,
+			int nbr, t_index *t_index);
 int		ft_apply_rrarb_a(int *stack_a, int *stack_b, int nbr, t_index *t_index);
 int		ft_apply_rarrb_a(int *stack_a, int *stack_b, int nbr, t_index *t_index);
 /*is sorted*/
@@ -99,5 +101,7 @@ int		is_sorted(int *stack, t_index *t_index, char type);
 void	sort_a(int *stack_a, int *stack_b, t_index *t_index);
 void	sort(int *stack_a, int *stack_b, t_index *t_index);
 void	sort_to_b_3(int *stack_a, int *stack_b, t_index *t_index);
+void	sorting(int *stack_a, int *stack_b, t_index *t_index);
+void	min_nbr_top(int *stack_a, t_index *t_index);
 
 #endif
