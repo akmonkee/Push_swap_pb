@@ -35,7 +35,7 @@ int	min_of_stack(int *stack, int len)
 
 	i = 0;
 	min = stack[i];
-	while (i < len && stack[i] != 0)
+	while (i < len)
 	{
 		if (stack[i] < min)
 			min = stack[i];
@@ -51,21 +51,9 @@ int	last_finder(int *stack, int len)
 	i = 0;
 	if (!stack)
 		return ('\0');
-	while (i < len && stack[i + 1] != '\0')
+	while (i < len)
 		i++;
 	return (stack[i]);
-}
-
-int	index_finder(int *stack, int max_nbr, int len)
-{
-	int	i;
-
-	i = 0;
-	while (stack[i] != max_nbr && i < len)
-	{
-		i++;
-	}
-	return (i);
 }
 
 int	stack_size(int *stack)

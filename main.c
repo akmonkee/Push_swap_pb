@@ -15,12 +15,17 @@
 void	ft_custom_error(int type)
 {
 	if (type == 0)
-		write(2, "Error\n no args?", 16);
+	{
+		write(2, "Error\n no args?\n", 16);
+		exit(0);
+	}
 	if (type == 1)
-		write(2, "Error\n ONLY NUMBERS", 20);
+		write(2, "Error\n ONLY NUMBERS\n", 20);
 	if (type == 2)
-		write(2, "Error\n ONLY DIFFERENT NUMBERS", 30);
-	exit(0);
+	{
+		write(2, "Error\n ONLY DIFFERENT NUMBERS\n", 30);
+		exit(0);
+	}
 }
 
 int	ft_atoi(char *str)
@@ -38,17 +43,23 @@ int	ft_atoi(char *str)
 			seg = -1;
 		i++;
 	}
-	if (!(str[i] >= '0' && str[i] <= '9'))
-		return (ft_custom_error(1), exit(0), 0);
+	num = i;
+	while (str[num] != '\0')
+	{
+		if (!(str[num] >= '0' && str[num] <= '9'))
+			return (ft_custom_error(1), 0);
+		num++;
+	}
+	num = 0;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		if (num * 10 < 0)
-			return (write(2, "Pesce", 5), exit(-1), 0);
+			return (write(2, "Pesce\n", 6), 0);
 		num = (num * 10) + (str[i] - '0');
 		i++;
 	}
 	if ((seg == -1 && num * seg > 0) || (seg == 1 && num * seg < 0))
-		return (write(2, "Pesce", 5), exit(-1), 0);
+		return (write(2, "Pesce\n", 6), 0);
 	return (num * seg);
 }
 
@@ -71,24 +82,23 @@ int	*stack_b_gen(int *stack_b, int len)
 
 int	main(int argc, char **argv)
 {
+	t_index	t_index;
 	int	*stack_a;
 	int	*stack_b;
-	int	len;
 	int	i;
 
 	i = -1;
-	if (argc > 2)
+	if (argc > 1)
 	{
-		len = arg_mtx_len(argc, argv);
-		stack_a = argc_check(argc, argv, len);
-		stack_b = stack_b_gen(stack_b, len);
-		sorting(stack_a, stack_b, len);
+		is_all_numbr(argc, argv);
+		t_index.len = arg_mtx_len(argc, argv);
+		stack_a = argc_check(argc, argv, t_index.len);
+		stack_b = stack_b_gen(stack_b, t_index.len);
+		sorting(stack_a, stack_b, &t_index);
 		free(stack_a);
 		free(stack_b);
 		exit(0);
 	}
-	if (argc == 2)
-		write(2, "Error\n", 6);
 	else
 		ft_custom_error(0);
 }

@@ -33,16 +33,38 @@ void	stack_dup_check(int *stack, int len)
 	while (++i < len)
 	{
 		k = -1;
-		while (++k < len)
+		while (++k < len - 1)
 		{
 			if (k == i)
 				k++;
-			if (stack[k] == stack[i])
+			if (stack[k] == stack[i] && len > 1)
 			{
 				free(stack);
 				ft_custom_error(2);
 			}
 		}
+	}
+}
+
+void	is_all_numbr(int argc, char**argv)
+{
+	int	i;
+	int	k;
+
+	i = 1;
+	while (i < argc && argv[i] != NULL)
+	{
+		k = 0;
+		while (argv[i][k] != '\0')
+		{
+			if ((argv[i][k] >= 33 && argv[i][k] <= 47) || (argv[i][k] >= 58 && argv[i][k] <= 127))
+			{
+				ft_custom_error(1);
+				exit(0);
+			}
+			k++;
+		}
+		i++;
 	}
 }
 

@@ -12,80 +12,80 @@
 
 #include "push_swap.h"
 
-int	ft_apply_rr_a(int *stack_a, int *stack_b, int nbr, int len)
+int	ft_apply_rr_a(int *stack_a, int *stack_b, int nbr, t_index *t_index)
 {
-	while (stack_b[0] != nbr && find_placein_a(stack_b, nbr, len) > 0)
+	while (stack_b[0] != nbr && find_placein_a(stack_a, nbr, t_index->index_a) > 0)
 	{
+		rr(stack_a, stack_b, t_index, 0);
 		ft_printf("rr\n");
-		rr(stack_a, stack_b, len, 0);
 	}
 	while (stack_b[0] != nbr)
 	{
-		ft_printf("ra\n");
-		ra(stack_a, len, 0);
-	}
-	while (find_placein_a(stack_b, nbr, len) > 0)
-	{
+		rb(stack_b, t_index, 0);
 		ft_printf("rb\n");
-		rb(stack_b, len, 0);
 	}
-	pa(stack_a, stack_b, len, 0);
+	while (find_placein_a(stack_a, nbr, t_index->index_a) > 0)
+	{
+		ra(stack_a, t_index, 0);
+		ft_printf("ra\n");
+	}
+	pa(stack_a, stack_b, t_index, 0);
 	ft_printf("pa\n");
 	return (-1);
 }
 
-int	ft_apply_rrarrb_a(int *stack_a, int *stack_b, int nbr, int len)
+int	ft_apply_rrarrb_a(int *stack_a, int *stack_b, int nbr, t_index *t_index)
 {
-	while (stack_b[0] != nbr && find_placein_a(stack_b, nbr, len) > 0)
+	while (stack_b[0] != nbr && find_placein_a(stack_a, nbr, t_index->index_a) > 0)
 	{
+		rrr(stack_a, stack_b, t_index, 0);
 		ft_printf("rrr\n");
-		rrr(stack_a, stack_b, len, 0);
 	}
 	while (stack_b[0] != nbr)
 	{
-		ft_printf("rra\n");
-		rra(stack_a, len, 0);
-	}
-	while (find_placein_a(stack_b, nbr, len) > 0)
-	{
+		rrb(stack_b, t_index, 0);
 		ft_printf("rrb\n");
-		rrb(stack_b, len, 0);
 	}
-	pa(stack_a, stack_b, len, 0);
+	while (find_placein_a(stack_a, nbr, t_index->index_a) > 0)
+	{
+		rra(stack_a, t_index, 0);
+		ft_printf("rra\n");
+	}
+	pa(stack_a, stack_b, t_index, 0);
 	ft_printf("pa\n");
 	return (-1);
 }
 
-int	ft_apply_rrarb_a(int *stack_a, int *stack_b, int nbr, int len)
+int	ft_apply_rrarb_a(int *stack_a, int *stack_b, int nbr, t_index *t_index)
 {
 	while (stack_b[0] != nbr)
 	{
-		ft_printf("rra\n");
-		rra(stack_a, len, 0);
-	}
-	while (find_placein_a(stack_b, nbr, len) > 0)
-	{
+		rb(stack_b, t_index, 0);
 		ft_printf("rb\n");
-		rb(stack_b, len, 0);
 	}
-	pa(stack_a, stack_b, len, 0);
+	while (find_placein_a(stack_a, nbr, t_index->index_a) > 0)
+	{
+		rra(stack_a, t_index, 0);
+		ft_printf("rra\n");
+	}
+	pa(stack_a, stack_b, t_index, 0);
 	ft_printf("pa\n");
 	return (-1);
 }
 
-int	ft_apply_rarrb_a(int *stack_a, int *stack_b, int nbr, int len)
+int	ft_apply_rarrb_a(int *stack_a, int *stack_b, int nbr, t_index *t_index)
 {
 	while (stack_b[0] != nbr)
 	{
-		ft_printf("ra\n");
-		ra(stack_a, len, 0);
-	}
-	while (find_placein_a(stack_b, nbr, len) > 0)
-	{
+		rrb(stack_b, t_index, 0);
 		ft_printf("rrb\n");
-		rrb(stack_b, len, 0);
 	}
-	pa(stack_a, stack_b, len, 0);
+	while (find_placein_a(stack_a, nbr, t_index->index_a) > 0)
+	{
+		ra(stack_a, t_index, 0);
+		ft_printf("ra\n");
+	}
+	pa(stack_a, stack_b, t_index, 0);
 	ft_printf("pa\n");
 	return (-1);
 }

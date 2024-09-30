@@ -12,44 +12,40 @@
 
 #include "push_swap.h"
 
-void	ra(int *stack_a, int len, int index)
+void	ra(int *stack_a, t_index *t_index, int index)
 {
-	while (index < len - 1)
+	while (index < t_index->index_a - 1)
 	{
-		if (stack_a[index + 1] != 0)
-			sa(stack_a, len, index);
+		sa(stack_a, index);
 		index++;
 	}
 }
 
-void	rb(int *stack_b, int len, int index)
+void	rb(int *stack_b, t_index *t_index, int index)
 {
-	while (index < len - 1)
+	while (index < t_index->index_b - 1)
 	{
-		if (stack_b[index + 1] != 0)
-			sb(stack_b, len, index);
+		sb(stack_b, index);
 		index++;
 	}
 }
 
-void	rr(int *stack_a, int *stack_b, int len, int index)
+void	rr(int *stack_a, int *stack_b, t_index *t_index, int index)
 {
-	ra(stack_a, len, index);
-	rb(stack_b, len, index);
+	ra(stack_a, t_index, index);
+	rb(stack_b, t_index, index);
 }
 
-void	rra(int *stack_a, int len, int index)
+void	rra(int *stack_a, t_index *t_index, int index)
 {
-	index = len - 1;
+	index = t_index->index_a - 1;
 	while (--index >= 0)
-		if (stack_a[index + 1] != 0)
-			sa(stack_a, len, index);
+		sa(stack_a, index);
 }
 
-void	rrb(int *stack_b, int len, int index)
+void	rrb(int *stack_b, t_index *t_index, int index)
 {
-	index = len - 1;
+	index = t_index->index_b - 1;
 	while (--index >= 0)
-		if (stack_b[index + 1] != 0)
-			sb(stack_b, len, index);
+		sb(stack_b, index);
 }

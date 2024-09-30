@@ -12,8 +12,8 @@
 
 #include "push_swap.h"
 
-void	rrr(int *stack_a, int *stack_b, int len, int index)
+void	rrr(int *stack_a, int *stack_b, t_index *t_index, int index)
 {
-	rra(stack_a, len, index);
-	rrb(stack_b, len, index);
+	rra(stack_a, t_index, index);
+	rrb(stack_b, t_index, index);
 }

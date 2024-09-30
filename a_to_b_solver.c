@@ -12,47 +12,47 @@
 
 #include "push_swap.h"
 
-int	case_rr(int *stack_a, int *stack_b, int nbr, int len)
+int	case_rr(int *stack_a, int *stack_b, int nbr, t_index *t_index)
 {
 	int	i;
 
-	i = find_placein_b(stack_b, nbr, len);
-	if (i < index_finder(stack_a, nbr, len))
-		i = index_finder(stack_a, nbr, len);
+	i = find_placein_b(stack_b, nbr, t_index->index_b);
+	if (i < index_finder(stack_a, nbr, t_index->index_a))
+		i = index_finder(stack_a, nbr, t_index->index_a);
 	return (i);
 }
 
-int	case_rrr(int *stack_a, int *stack_b, int nbr, int len)
+int	case_rrr(int *stack_a, int *stack_b, int nbr, t_index *t_index)
 {
 	int	i;
 
 	i = 0;
-	if (find_placein_b(stack_b, nbr, len))
-		i = stack_size(stack_b) - find_placein_b(stack_b, nbr, len);
-	if ((i < (stack_size(stack_b) - index_finder(stack_a, nbr, len))
-			&& index_finder(stack_a, nbr, len)))
-		i = stack_size(stack_a) - find_placein_b(stack_a, nbr, len);
+	if (find_placein_b(stack_b, nbr, t_index->index_b))
+		i = t_index->index_b + find_placein_b(stack_b, nbr, t_index->index_b);
+	if ((i < (t_index->index_a + index_finder(stack_a, nbr, t_index->index_a))
+			&& index_finder(stack_a, nbr, t_index->index_a)))
+		i = t_index->index_a + index_finder(stack_a, nbr, t_index->index_a);
 	return (i);
 }
 
-int	case_rrarb(int *stack_a, int *stack_b, int nbr, int len)
+int	case_rrarb(int *stack_a, int *stack_b, int nbr, t_index *t_index)
 {
 	int	i;
 
 	i = 0;
-	if (index_finder(stack_a, nbr, len))
-		i = stack_size(stack_a) - index_finder(stack_a, nbr, len);
-	i = find_placein_b(stack_b, nbr, len) + i;
+	if (index_finder(stack_a, nbr, t_index->index_a))
+		i = t_index->index_a + index_finder(stack_a, nbr, t_index->index_a);
+	i = find_placein_b(stack_b, nbr, t_index->index_b) + i;
 	return (i);
 }
 
-int	case_rarrb(int *stack_a, int *stack_b, int nbr, int len)
+int	case_rarrb(int *stack_a, int *stack_b, int nbr, t_index *t_index)
 {
 	int	i;
 
 	i = 0;
-	if (find_placein_b(stack_b, nbr, len))
-		i = stack_size(stack_b) - find_placein_b(stack_b, nbr, len);
-	i = index_finder(stack_a, nbr, len);
+	if (find_placein_b(stack_b, nbr, t_index->index_b))
+		i = t_index->index_b + find_placein_b(stack_b, nbr, t_index->index_b);
+	i = index_finder(stack_a, nbr, t_index->index_a) + i;
 	return (i);
 }

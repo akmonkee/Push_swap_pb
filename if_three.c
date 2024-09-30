@@ -12,35 +12,35 @@
 
 #include "push_swap.h"
 
-void	sort_three(int	*stack, int len)
+void	sort_three(int	*stack, t_index *t_index)
 {
-	if (min_of_stack(stack, len) == stack[0])
+	if (min_of_stack(stack, t_index->index_a) == stack[0] && !is_sorted(stack, t_index, 'a'))
 	{
-		rra(stack, len, 0);
+		rra(stack, t_index, 0);
 		ft_printf("rra\n");
-		sa(stack, len, 0);
+		sa(stack, 0);
 		ft_printf("sa\n");
 	}
-	else if (max_of_stack(stack, len) == stack[0])
+	else if (max_of_stack(stack, t_index->index_a) == stack[0] && !is_sorted(stack, t_index, 'a'))
 	{
-		ra(stack, len, 0);
+		ra(stack, t_index, 0);
 		ft_printf("ra\n");
-		if (!is_sorted(stack, len, 'a'))
+		if (!is_sorted(stack, t_index, 'a'))
 		{
-			sa(stack, len, 0);
+			sa(stack, 0);
 			ft_printf("sa\n");
 		}
 	}
 	else
 	{
-		if (index_finder(stack, max_of_stack(stack, len), len) == 1)
+		if (index_finder(stack, max_of_stack(stack, t_index->index_a), t_index->index_a) == 1 && !is_sorted(stack, t_index, 'a'))
 		{
-			rra(stack, len, 0);
+			rra(stack, t_index, 0);
 			ft_printf("rra\n");
 		}
-		else
+		else if(!is_sorted(stack, t_index, 'a'))
 		{
-			sa(stack, len, 0);
+			sa(stack, 0);
 			ft_printf("sa\n");
 		}
 	}

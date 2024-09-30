@@ -38,15 +38,17 @@ int	order_checker(int *stack, int len, int type)
 	return (1);
 }
 
-void	print_stack(int *stack, int len)
+void	print_stack(int *stack_a, int *stack_b, t_index *t_index)
 {
 	int	i;
 
 	i = 0;
-	while (i < len)
+	ft_printf("------------\n");
+	ft_printf("|A    |B    |\n");
+	while (i < t_index->len)
 	{
-		ft_printf("%d\n", stack[i]);
+		ft_printf("|%d    |%d    |\n", stack_a[i], stack_b[i]);
 		i++;
 	}
-	ft_printf("--------------------------------\n");
+	ft_printf("-------------\n");
 }
