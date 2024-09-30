@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 14:48:43 by msisto            #+#    #+#             */
-/*   Updated: 2024/09/30 11:35:04 by msisto           ###   ########.fr       */
+/*   Updated: 2024/09/30 13:42:08 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	aux(char **arr, const char *str, char c);
 void	new_string(const char *str, int start, int end, char *dest);
 int		count_words(const char *str, char c);
 /*stack generator and arg check*/
-int		ft_atoi(char *str);
+int		ft_atoi(char *str, int *stack);
 void	ft_custom_error(int type);
 int		*argc_check(int argc, char **argv, int len);
 void	stack_dup_check(int *stack, int len);

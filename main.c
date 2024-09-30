@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 14:43:34 by msisto            #+#    #+#             */
-/*   Updated: 2024/09/30 11:31:37 by msisto           ###   ########.fr       */
+/*   Updated: 2024/09/30 13:44:11 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_custom_error(int type)
 	}
 }
 
-int	ft_atoi(char *str)
+int	ft_atoi(char *str, int *stack)
 {
 	int	num;
 	int	seg;
@@ -43,16 +43,15 @@ int	ft_atoi(char *str)
 			seg = -1;
 		i++;
 	}
-	num = 0;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		if (num * 10 < 0)
-			return (write(2, "Pesce\n", 6), 0);
+			return (write(2, "Error\n", 6), free(stack), exit(0), 0);
 		num = (num * 10) + (str[i] - '0');
 		i++;
 	}
 	if ((seg == -1 && num * seg > 0) || (seg == 1 && num * seg < 0))
-		return (write(2, "Pesce\n", 6), 0);
+		return (write(2, "Error\n", 6), free(stack), exit(0), 0);
 	return (num * seg);
 }
 

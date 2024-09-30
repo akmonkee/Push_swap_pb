@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:16:48 by msisto            #+#    #+#             */
-/*   Updated: 2024/05/31 14:03:24 by msisto           ###   ########.fr       */
+/*   Updated: 2024/09/30 13:42:41 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	put_split_instack(char *str, char **split, int *stack, int index)
 	k = -1;
 	split = ft_split(str, ' ');
 	while (split[++k] != NULL)
-		stack[index + k] = ft_atoi(split[k]);
+		stack[index + k] = ft_atoi(split[k], stack);
 	mtx_free(split);
 	return (k);
 }
@@ -84,7 +84,7 @@ void	stack_gen(char **argv, int *stack, int i, int index)
 	}
 	if (spaces == 0)
 	{
-		stack[index] = ft_atoi(argv[i]);
+		stack[index] = ft_atoi(argv[i], stack);
 		stack_gen(argv, stack, i + 1, index + 1);
 	}
 }
