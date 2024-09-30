@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:16:48 by msisto            #+#    #+#             */
-/*   Updated: 2024/09/30 13:42:41 by msisto           ###   ########.fr       */
+/*   Updated: 2024/09/30 15:19:32 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	put_split_instack(char *str, char **split, int *stack, int index)
 
 	k = -1;
 	split = ft_split(str, ' ');
+	if (split == NULL || split[0] == NULL)
+		return (ft_printf("Error\n"), free(stack), exit(0), 0);
 	while (split[++k] != NULL)
 		stack[index + k] = ft_atoi(split[k], stack);
 	mtx_free(split);
