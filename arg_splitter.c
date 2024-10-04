@@ -29,7 +29,7 @@ int	put_split_instack(char *str, char **split, int *stack, int index)
 	k = -1;
 	split = ft_split(str, ' ');
 	if (split == NULL || split[0] == NULL)
-		return (ft_printf("Error\n"), free(stack), exit(0), 0);
+		return (ft_printf("Error\n"), free(stack), mtx_free(split), exit(0), 0);
 	while (split[++k] != NULL)
 		stack[index + k] = ft_atoi(split[k], stack);
 	mtx_free(split);
@@ -40,7 +40,6 @@ int	arg_mtx_len(int argc, char **argv)
 {
 	int	i;
 	int	k;
-	int	spaces;
 	int	len;
 
 	i = 0;
@@ -48,16 +47,19 @@ int	arg_mtx_len(int argc, char **argv)
 	while (argv[++i] != NULL && i < argc)
 	{
 		k = -1;
-		spaces = 0;
-		while (argv[i][++k] != '\0')
-		{
-			if (argv[i][k] == ' ')
+		if (ft_strlen(argv[i]) > 2)
+			while (argv[i][++k] != '\0')
 			{
-				spaces++;
+				if (argv[i][k] >= '0' && argv[i][k] <= '9')
+				{
+					while ((argv[i][k] >= '0' && argv[i][k] <= '9') && k < ft_strlen(argv[i]) - 1)
+					{
+						ft_printf("test\n");
+						k++;
+					}
+					len++;
+				}
 			}
-		}
-		if (spaces != 0)
-			len = len + (spaces + 1);
 		else
 			len++;
 	}

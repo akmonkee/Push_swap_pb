@@ -25,7 +25,12 @@ int	count_words(const char *str, char c)
 		if (str[i] == c)
 			spaces++;
 	}
-	return (spaces + 1);
+	if (str[0] == c || str[i] == c)
+		return (spaces);
+	else if (str[0] == c && str[i] == c)
+		return (spaces - 1);
+	else
+		return (spaces + 1);
 }
 
 void	new_string(const char *str, int start, int end, char *dest)

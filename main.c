@@ -84,6 +84,11 @@ int	main(int argc, char **argv)
 	{
 		is_all_numbr(argc, argv);
 		t_index.len = arg_mtx_len(argc, argv);
+		if (t_index.len == 0)
+		{
+			ft_custom_error(0);
+			exit(0);
+		}
 		stack_a = argc_check(argc, argv, t_index.len);
 		stack_b = stack_b_gen(stack_b, t_index.len);
 		sorting(stack_a, stack_b, &t_index);
