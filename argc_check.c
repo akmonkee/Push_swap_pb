@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 12:12:48 by msisto            #+#    #+#             */
-/*   Updated: 2024/09/30 11:13:32 by msisto           ###   ########.fr       */
+/*   Updated: 2024/10/04 14:15:24 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ void	is_all_numbr(int argc, char**argv)
 		k = 0;
 		while (argv[i][k] != '\0')
 		{
+			if (argv[i][k] == '-'
+				&& (argv[i][k + 1] >= '0' && argv[i][k + 1] <= '9'))
+				k++;
 			if ((argv[i][k] >= 33 && argv[i][k] <= 47)
 				|| (argv[i][k] >= 58 && argv[i][k] <= 127))
 			{

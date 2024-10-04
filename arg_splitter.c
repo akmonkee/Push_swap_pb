@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:16:48 by msisto            #+#    #+#             */
-/*   Updated: 2024/09/30 15:19:32 by msisto           ###   ########.fr       */
+/*   Updated: 2024/10/04 15:40:18 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	mtx_free(char **mtx)
 	int	i;
 
 	i = -1;
+	if (!mtx)
+		return ;
 	while (mtx[++i] != NULL)
 		free(mtx[i]);
 	free(mtx);
@@ -26,12 +28,15 @@ int	put_split_instack(char *str, char **split, int *stack, int index)
 {
 	int	k;
 
-	k = -1;
+	k = 0;
 	split = ft_split(str, ' ');
 	if (split == NULL || split[0] == NULL)
 		return (ft_printf("Error\n"), free(stack), mtx_free(split), exit(0), 0);
-	while (split[++k] != NULL)
+	while (split[k] != NULL)
+	{
 		stack[index + k] = ft_atoi(split[k], stack);
+		k++;
+	}
 	mtx_free(split);
 	return (k);
 }
@@ -52,11 +57,9 @@ int	arg_mtx_len(int argc, char **argv)
 			{
 				if (argv[i][k] >= '0' && argv[i][k] <= '9')
 				{
-					while ((argv[i][k] >= '0' && argv[i][k] <= '9') && k < ft_strlen(argv[i]) - 1)
-					{
-						ft_printf("test\n");
+					while ((argv[i][k] >= '0' && argv[i][k] <= '9')
+						&& k < ft_strlen(argv[i]) - 1)
 						k++;
-					}
 					len++;
 				}
 			}
@@ -95,10 +98,8 @@ void	stack_gen(char **argv, int *stack, int i, int index)
 
 int	*arg_splitter(int argc, char **argv, int len)
 {
-	int		i;
 	int		*stack_a;
 
-	i = 1;
 	stack_a = malloc((len + 1) * sizeof(int));
 	if (!stack_a)
 		return (NULL);

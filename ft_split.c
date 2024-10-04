@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:19:05 by msisto            #+#    #+#             */
-/*   Updated: 2024/09/30 15:25:07 by msisto           ###   ########.fr       */
+/*   Updated: 2024/10/04 16:01:39 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,23 @@
 int	count_words(const char *str, char c)
 {
 	int	i;
-	int	spaces;
+	int	words;
 
 	i = 0;
-	spaces = 0;
-	while (str[++i] != '\0')
+	words = 0;
+	while (str[i] == c && str[i] != '\0')
+		i++;
+	while (str[i] != '\0')
 	{
-		if (str[i] == c)
-			spaces++;
+		if (str[i] != c)
+		{
+			while (str[i + 1] != c && str[i + 1] != '\0')
+				i++;
+			words++;
+		}
+		i++;
 	}
-	if (str[0] == c || str[i] == c)
-		return (spaces);
-	else if (str[0] == c && str[i] == c)
-		return (spaces - 1);
-	else
-		return (spaces + 1);
+	return (words);
 }
 
 void	new_string(const char *str, int start, int end, char *dest)
@@ -54,22 +56,19 @@ void	aux(char **arr, const char *str, char c)
 
 	i = 0;
 	z = 0;
-	while (str[i] && z <= count_words(str, c))
+	while (str[i] && z < count_words(str, c))
 	{
-		if (str[i] == c)
+		j = 0;
+		while (str[i] == c)
 			i++;
-		else
-		{
-			j = 0;
-			while (str[i + j] != c && str[i + j])
-				j++;
-			arr[z] = (char *)malloc(sizeof(char) * (j + 1));
-			if (!arr[z])
-				return ;
-			new_string(str, i, j, arr[z]);
-			z++;
-			i += j;
-		}
+		while (str[i + j] != c && str[i + j])
+			j++;
+		arr[z] = (char *)malloc(sizeof(char) * (j + 1));
+		if (!arr[z])
+			return ;
+		new_string(str, i, j, arr[z]);
+		z++;
+		i += j;
 	}
 }
 
