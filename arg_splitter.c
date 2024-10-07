@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:16:48 by msisto            #+#    #+#             */
-/*   Updated: 2024/10/04 15:40:18 by msisto           ###   ########.fr       */
+/*   Updated: 2024/10/07 11:30:47 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,19 +52,16 @@ int	arg_mtx_len(int argc, char **argv)
 	while (argv[++i] != NULL && i < argc)
 	{
 		k = -1;
-		if (ft_strlen(argv[i]) > 2)
-			while (argv[i][++k] != '\0')
+		while (argv[i][++k] != '\0')
+		{
+			if (argv[i][k] >= '0' && argv[i][k] <= '9')
 			{
-				if (argv[i][k] >= '0' && argv[i][k] <= '9')
-				{
-					while ((argv[i][k] >= '0' && argv[i][k] <= '9')
-						&& k < ft_strlen(argv[i]) - 1)
-						k++;
-					len++;
-				}
+				while ((argv[i][k] >= '0' && argv[i][k] <= '9')
+					&& k < ft_strlen(argv[i]) - 1)
+					k++;
+				len++;
 			}
-		else
-			len++;
+		}
 	}
 	return (len);
 }
