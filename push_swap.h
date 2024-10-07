@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 14:48:43 by msisto            #+#    #+#             */
-/*   Updated: 2024/10/07 11:30:31 by msisto           ###   ########.fr       */
+/*   Updated: 2024/10/07 11:34:30 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,23 @@ typedef struct t_index
 	int	len;
 }	t_index;
 
-void	is_all_numbr(int argc, char**argv);
-int		order_checker(int *stack, int len, int type);
-void	print_stack(int *stack_a, int *stack_b, t_index *t_index);
 /*split and friends*/
-char	**ft_split(const char *str, char c);
 void	aux(char **arr, const char *str, char c);
 void	new_string(const char *str, int start, int end, char *dest);
 int		count_words(const char *str, char c);
+char	**ft_split(const char *str, char c);
 /*stack generator and arg check*/
-int		ft_atoi(char *str, int *stack);
+void	is_all_numbr(int argc, char**argv);
 void	ft_custom_error(int type);
-int		*argc_check(int argc, char **argv, int len);
 void	stack_dup_check(int *stack, int len);
-int		*arg_splitter(int argc, char **argv, int len);
-int		ft_strlen(const char *str);
-int		arg_mtx_len(int argc, char **argv);
 void	stack_gen(char **argv, int *stack, int i, int index);
 void	mtx_free(char **mtx);
 void	inv_arg_check(char **argv);
+int		ft_atoi(char *str, int *stack);
+int		*argc_check(int argc, char **argv, int len);
+int		*arg_splitter(int argc, char **argv, int len);
+int		ft_strlen(const char *str);
+int		arg_mtx_len(int argc, char **argv);
 int		put_split_instack(char *str, char **split, int *stack, int index);
 int		*stack_b_gen(int *stack_b, int len);
 /*if len is 3*/
@@ -64,6 +62,7 @@ void	rra(int *stack_a, t_index *t_index, int index);
 void	rrb(int *stack_b, t_index *t_index, int index);
 void	rrr(int *stack_a, int *stack_b, t_index *t_index, int index);
 /*utils*/
+void	print_stack(int *stack_a, int *stack_b, t_index *t_index);
 int		max_of_stack(int *stack, int len);
 int		min_of_stack(int *stack, int len);
 int		stack_size(int *stack);
@@ -71,6 +70,7 @@ int		last_finder(int *stack, int len);
 int		index_finder(int *stack, int nbr, int len);
 int		find_placein_a(int *stack, int nbr, int len);
 int		find_placein_b(int *stack, int nbr, int len);
+int		order_checker(int *stack, int len, int type);
 /*a to b solver*/
 int		case_rr(int *stack_a, int *stack_b, int nbr, t_index *t_index);
 int		case_rrr(int *stack_a, int *stack_b, int nbr, t_index *t_index);
